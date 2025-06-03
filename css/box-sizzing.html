@@ -1,0 +1,103 @@
+
+
+<!--
+
+
+Without the CSS box-sizing Property
+By default, the width and height of an element is calculated like this:
+
+
+width + padding + border = actual width of an element
+height + padding + border = actual height of an element
+
+
+.box{
+	box-sizing: border-box;
+}
+
+
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+*{
+	box-sizing:border-box;
+}
+
+.box1{
+		width:25%;
+		height:auto;
+		background-color:orange;
+		float:left;
+		padding:10px;
+		border:solid 10px green;
+		
+	}
+.box2{
+	width:25%;
+	height:auto;
+	background-color:red;
+	float:left;
+	padding:10px;
+	border:solid 10px green;
+	}
+</style>
+</head>
+<body>
+	
+	<div class="box1">
+		<h1>Hello 1</h1>
+	</div>
+	<div class="box2">
+		<h1>Hello 1</h1>
+	</div>
+	<div class="box1">
+		<h1>Hello 1</h1>
+	</div>
+	<div class="box2">
+		<h1>Hello 1</h1>
+	</div>
+	
+	
+	
+<style>	
+.test1{
+		width:25%;
+		height:auto;
+		float:left;
+		padding:20px;
+		border:solid 2px black;
+	}
+
+
+
+</style>	
+	
+	<div class="test1">
+		<div style="gray"">
+			<img src="mobile.png" width="100%">
+		</div>
+	</div>
+	<div class="test1">
+		<div style="gray">
+			<img src="mobile.png" width="100%">
+		</div>
+	</div>
+	<div class="test1">
+		<div style="gray">
+			<img src="mobile.png" width="100%">
+		</div>
+	</div>
+	<div class="test1">
+		<div style="gray">
+			<img src="mobile.png" width="100%">
+		</div>
+	</div>
+	
+	
+</body>
+</html>
