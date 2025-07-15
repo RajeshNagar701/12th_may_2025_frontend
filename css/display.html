@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+	/*
+	SCOPE OF element
+	
+	1)Block 2)Inline  
+	
+	*/
+	
+
+	ul#menu li {
+	  display:inline;
+	}
+	
+	p{
+		display:inline;
+	}
+
+
+	a{
+		display:block;
+		background-color:pink;
+	}
+	
+	img{
+		display:block;
+	}
+	
+	.remove{
+		/* display:none; */   /* div remove */
+		visibility:hidden;      /* div Hide */
+	}
+	
+	.row{
+		display:flex;
+		flex-wrap: wrap;
+	}
+	.row1{
+		display:flex;
+	}
+
+	
+</style>
+</head>
+<body>
+
+<p>Display a list of links as a horizontal menu:</p>
+
+
+<!-- Block scope to inline convert -->
+<ul id="menu">
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>JavaScript</li>
+  <li>PHP</li>
+</ul>  
+
+<!-- Block scope to inline convert -->
+<p style="background-color:red">Hello How are you</p>
+<p style="background-color:green">Hello How are you</p>
+
+
+<!-- inline scope to block convert -->
+<a href="">Home</a>
+<a href="">Home</a>
+<a href="">Home</a>
+<a href="">Home</a>
+
+<!-- inline scope to block convert -->
+<img src="a.jpg" />
+<img src="b.jpg" />
+<img src="c.jpg" />
+
+<hr>
+
+
+	<h1>Head 1</h1>
+	<h1 class="remove">Head 2</h1>
+	<h1>Head 3	</h1>
+
+<hr>
+
+
+</body>
+</html>
