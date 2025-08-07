@@ -30,16 +30,18 @@
 <script>
 function validation3(arg){
 	
-	if(arg.ufn.value=="")
+	var ufn=arg.ufn.value;
+	if(ufn=="")
 	{
-		document.getElementById('msg').innerHTML='First Name Field is required';
-		//document.getElementById('ufn').setAttribute('placeholder','First Name Field is required');
+		document.getElementById('msg').innerHTML='ufn Field is required';
 		arg.ufn.focus();
 		return false;
 	}
-	if(arg.uln.value=="")
+	
+	var uln=arg.uln.value;
+	if(uln=="")
 	{
-		document.getElementById('msg').innerHTML='Last Name Field is required';
+		document.getElementById('msg').innerHTML='uln Field is required';
 		arg.uln.focus();
 		return false;
 	}
