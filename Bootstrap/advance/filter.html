@@ -94,6 +94,19 @@ $(document).ready(function(){
 <br>
 <br>
 
+<script>
+$(document).ready(function(){
+  $("#myInput1").on("keyup", function() 
+  {
+    var value = $(this).val().toLowerCase();
+    $("#myList li").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+
 <div class="container mt-3">
   <h2>Filterable List</h2>
   <p>Type something in the input field to search the list for specific items:</p>  
@@ -107,15 +120,6 @@ $(document).ready(function(){
   </ul>  
 </div>
 
-<script>
-$(document).ready(function(){
-  $("#myInput1").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myList li").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
 </script>
 
 </body>
