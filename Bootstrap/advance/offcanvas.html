@@ -9,9 +9,9 @@
 </head>
 <body>
 
-<div class="offcanvas offcanvas-start" id="demo">
+<div class="offcanvas offcanvas-start" id="demo1">
   <div class="offcanvas-header">
-    <h1 class="offcanvas-title">Heading</h1>
+    <h1 class="offcanvas-title">Heading Start </h1>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
   </div>
   <div class="offcanvas-body">
@@ -22,11 +22,61 @@
   </div>
 </div>
 
-<div class="container-fluid mt-3">
+<div class="offcanvas offcanvas-end" id="demo2">
+  <div class="offcanvas-header">
+    <h1 class="offcanvas-title">Heading End</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p>Some text lorem ipsum.</p>
+    <p>Some text lorem ipsum.</p>
+    <p>Some text lorem ipsum.</p>
+    <button class="btn btn-secondary" type="button">A Button</button>
+  </div>
+</div>
+
+<div class="offcanvas offcanvas-top" id="demo3">
+  <div class="offcanvas-header">
+    <h1 class="offcanvas-title">Heading Top</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p>Some text lorem ipsum.</p>
+    <p>Some text lorem ipsum.</p>
+    <p>Some text lorem ipsum.</p>
+    <button class="btn btn-secondary" type="button">A Button</button>
+  </div>
+</div>
+
+<div class="offcanvas offcanvas-bottom" id="demo4">
+  <div class="offcanvas-header">
+    <h1 class="offcanvas-title">Heading bottom</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p>Some text lorem ipsum.</p>
+    <p>Some text lorem ipsum.</p>
+    <p>Some text lorem ipsum.</p>
+    <button class="btn btn-secondary" type="button">A Button</button>
+  </div>
+</div>
+
+<div class="container-fluid mt-3 bg-primary p-5">
   <h3>Offcanvas Sidebar</h3>
   <p>Offcanvas is similar to modals, except that it is often used as a sidebar.</p>
-  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
-    Open Offcanvas Sidebar
+  <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo1">
+    Start Offcanvas Sidebar 
+  </button>
+  <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo2">
+    End Offcanvas Sidebar
+  </button>
+  
+  <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo3">
+    top Offcanvas Sidebar
+  </button>
+  
+   <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo4">
+    bottom Offcanvas Sidebar
   </button>
 </div>
 

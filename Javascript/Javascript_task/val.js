@@ -9,6 +9,19 @@ function reg_form(str)
 	return false;
 	}
 	
+	/*
+	
+	pattern
+	
+	match(/^[a-zA-Z]+$/)   ALPHA 
+	match(/^[0-9]+$/)   NUMBER 
+	
+	match(/^[0-9]{8,12}$/)   NUMBER + MIN & MAX
+	match(/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,3})+$/))
+	
+	
+	*/
+	
 	if(!str.uname.value.match(/^[a-zA-Z]{1,}$/))
 	{
 	document.getElementById("msg1").innerHTML="! Please enter Only Character Value";
@@ -24,11 +37,25 @@ function reg_form(str)
 	}
 	
 	
-	if(str.pass.value.length<8)
+	if(str.pass.value.length<8 || str.pass.value.length>12)
 	{
-	document.getElementById("msg1").innerHTML="! Please enter minimum 8 digit length";
+	document.getElementById("msg1").innerHTML="! Please enter between 8 to 12 digit length";
 	str.pass.focus();
 	return false;
+	}
+	
+	if(str.cpass.value=="")
+	{
+	document.getElementById("msg1").innerHTML="! Please enter Some Value in Confirm Password";
+	str.cpass.focus();
+	return false;
+	}
+	
+	if(str.pass.value!=str.cpass.value)
+	{
+		document.getElementById("msg1").innerHTML="! Please enter same Value in Confirm Password";
+		str.cpass.focus();
+		return false;
 	}
 	
 	if(str.email.value=="")
@@ -116,8 +143,10 @@ function reg_form(str)
 	}
 	
 	var image = document.getElementById("photo");
+	// size/(1024*1024)
     var img_size_mb = parseFloat(image.files[0].size / (1024 * 1024)).toFixed(2); 
-     if(img_size_mb > 2) 
+     
+	 if(img_size_mb > 0.05) 
 	 {
 		 document.getElementById("msg1").innerHTML="! Please select image size less than 2 MB ";
 		 str.photo.focus();
@@ -170,8 +199,6 @@ function reg_form(str)
 		}
 	} 
 	
-	
-	//below function is for pdf validation
 	function check1(file)
 	{
 	
