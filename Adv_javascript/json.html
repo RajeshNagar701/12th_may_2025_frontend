@@ -1,6 +1,7 @@
 
 <!--
 
+
 JSON is a format for storing and transporting data.
 JSON is often used when data is sent from a server to a web page.
 JSON stands for JavaScript Object Notation
@@ -13,11 +14,11 @@ programming language.
 
 
 json=`{"id":102,"name":"Shyam Kumar","salary":40000}`;
+
 console.log(json);
 
-josn to object 
-
 obj={id:102,name:"Shyam Kumar",salary:40000};  	// javascript object
+
 console.log(obj);
 
 
@@ -57,24 +58,22 @@ console.log(obj);
 	 // now we convert our json data in Object
 	
 	
-	/*
+	
 	var myobj=JSON.parse(jsonData);
 	 console.log(myobj);
 	 
 	 
 	 var myjson=JSON.stringify(myobj);
 	 console.log(myjson);
-	 */ 
+	  
 	
 	
-	//https://jsonplaceholder.typicode.com/
 	
-	//https://jsonplaceholder.typicode.com/posts
+	// url / api format json data fake : https://jsonplaceholder.typicode.com/
 	
 	
-	fetch(`https://jsonplaceholder.typicode.com/posts`)
-	.then((xyz)=> xyz.json())
-	.then((obj)=>   console.log(obj) );
-	
+	fetch('https://jsonplaceholder.typicode.com/posts')
+	.then((response)=> response.json())
+	.then((myobj)=> console.log(myobj));
 	
 </script>

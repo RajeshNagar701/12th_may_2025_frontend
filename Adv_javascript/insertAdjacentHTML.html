@@ -37,7 +37,7 @@ After the element. Only valid if the element is in the DOM tree and has a parent
   
 <!--
   Definition and Usage
-The insertAdjacentHTML() method inserts HTML code into a specified position.
+The insertAdjacentHTML(position,html) method inserts HTML code into a specified position.
 
 Legal positions:
 
@@ -59,9 +59,11 @@ beforeend	Before the end of the element (last child)
   
     <script>
 	
-		var div=document.getElementById('data');
-		div.insertAdjacentHTML('beforeend', "<h4>Hi i am h4</h4>");
-	
+		//document.getElementById('data').innerHTML="<p>Hello i am p tag</p>";
+		
+		var mydiv=document.getElementById('data');
+		mydiv.insertAdjacentHTML('afterend',"<p>Hi i am p tag</p>");
+		
 	</script>
 	
 	

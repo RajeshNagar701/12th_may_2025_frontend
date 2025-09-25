@@ -15,37 +15,42 @@
   </head>
   <body>
     
-    <div class="container">
-	  <div class="spinner-border" id="spin"></div>	
-      <div class="row" id="btn"></div>
+    <div class="container mt-5">
+		
+	  <div class="spinner-border text-danger" id="spin"></div>	
+      <div class="row" id="mydiv">
+		
+	  </div>
     </div>
     <script>
          
-      let btn = document.getElementById("btn");
+      let mydiv = document.getElementById("mydiv");
 
-      function showData(data) 
+      function showData(objarr) 
 	  {
-		for(const myData of data) 
+		for(const myData of objarr) 
 		{
 		  let htmlData = `<div class="col-md-3">
 			<div class="card">
-			  <img src="${myData.url}" class="card-img-top" alt="" />
+			  <img src="${myData.image}" style='height:200px' class="card-img-top" alt="" />
 			  <div class="card-body">
 				<h5 class="card-title">${myData.title}</h5>
+				<h5 class="card-title">${myData.price}</h5>
 			  </div>
 			</div>
 		  </div>`;
-		  btn.insertAdjacentHTML("afterbegin", htmlData);
+		  
+		  mydiv.insertAdjacentHTML("afterbegin", htmlData);
 		}
       }
 	  
      
-	fetch("https://jsonplaceholder.typicode.com/photos")
+	fetch("https://fakestoreapi.com/products")
 	  .then((response) => {
 		return response.json();
 	  })
-	  .then((data) => {
-		showData(data);
+	  .then((objarr) => {
+		showData(objarr);
 		document.getElementById('spin').style.display="none";
 	  })
 	  .catch((err) => console.log(err));
