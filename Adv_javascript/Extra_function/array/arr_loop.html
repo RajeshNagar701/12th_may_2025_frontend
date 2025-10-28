@@ -46,10 +46,13 @@ document.writeln(marks.every(check) + "</br>");
 
 
 var arr=['John','Michael','Embrose','Herry','Lewis'];  
-var itr=arr.entries();  
-for(var e of itr) //for loop using var.  
-{  
-	document.write(e+"</br>");  
-}  
+document.writeln(arr +"</br>"); 
+var new_arr=arr.entries();  
+
+for(var data of new_arr)
+{
+	document.writeln(data +"</br>"); 
+}
+
 
 </script>
