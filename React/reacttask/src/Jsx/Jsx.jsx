@@ -18,6 +18,8 @@ With JSX you can write expressions inside curly braces { }.
 
 import React from 'react'
 
+import './mystyle2.css';
+
 function Jsx() {
 
   let data="Hi i am jsx";  
