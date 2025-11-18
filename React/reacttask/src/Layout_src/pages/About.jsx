@@ -7,6 +7,7 @@ import Footer from '../component/Footer'
 function About() {
   return (
     <div>
+        
             <Header/>
             <div className="container mt-5">
                 <div className="row">
