@@ -10,6 +10,7 @@ import Contact from "./Layout_src/pages/Contact";
 import Home from "./Layout_src/pages/Home";
 import Module_css from "./Module_css/Module_css";
 import Main_props from "./Props/Main_props";
+import MainReactBootstrap from "./ReactBootstrap/MainReactBootstrap";
 import App_routing from "./Routing_src/App_routing";
 import Sass from "./Sass/Sass";
 
@@ -32,12 +33,15 @@ function App() {
 
          //<Mycss/>
          //<Module_css/>
+         //<Sass/> 
 
          //props
          //<Main_props/>
+         
+         //<App_routing/>
 
-         //<Sass/> 
-         <App_routing/>
+         <MainReactBootstrap/>
+
       }
       
     </div>
