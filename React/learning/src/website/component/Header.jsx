@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 function Header() {
   return (
     <div>
-      &lt;&gt;{/* Start Top Nav */}
+
       <nav className="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
         <div className="container text-light">
           <div className="w-100 d-flex justify-content-between">
@@ -43,11 +43,22 @@ function Header() {
                   <NavLink className="nav-link" to="/about">About</NavLink>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="shop.html">Shop</a>
+                  <a className="nav-link" href="/shop">Shop</a>
                 </li>
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/contact">Contact</NavLink>
                 </li>
+                <li className="nav-item dropdown">
+                  <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">My Account</a>
+                  <ul className="dropdown-menu">
+                    <li><a className="dropdown-item" href="#">Profile</a></li>
+                    <li><a className="dropdown-item" href="#">Logout</a></li>
+                  </ul>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/login">Login</NavLink>
+                </li>
+
               </ul>
             </div>
             <div className="navbar align-self-center d-flex">
