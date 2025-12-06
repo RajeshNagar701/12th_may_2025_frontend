@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function Add_categories() {
+function Add_product() {
   return (
     <div>
         <div className="container-fluid bg-light py-5">
                 <div className="col-md-6 m-auto text-center">
-                    <h1 className="h1">Add Categories</h1>
+                    <h1 className="h1">Add Product</h1>
                    
                 </div>
             </div>
@@ -41,4 +41,4 @@ function Add_categories() {
   )
 }
 
-export default Add_categories
+export default Add_product

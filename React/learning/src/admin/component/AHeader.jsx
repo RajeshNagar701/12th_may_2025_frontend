@@ -43,23 +43,23 @@ function AHeader() {
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Categoriest</a>
                   <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="#">Add Categoriest</a></li>
-                    <li><a className="dropdown-item" href="#">Manage Categoriest</a></li>
+                    <li><NavLink className="dropdown-item" to="/add_categories">Add Categoriest</NavLink></li>
+                    <li><NavLink className="dropdown-item" to="/manage_categories">Manage Categoriest</NavLink></li>
                   </ul>
                 </li>
 
                  <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Product</a>
                   <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="#">Add Product</a></li>
-                    <li><a className="dropdown-item" href="#">Manage Product</a></li>
+                    <li><NavLink className="dropdown-item" to="/add_product">Add Product</NavLink></li>
+                    <li><NavLink className="dropdown-item" to="/manage_product">Manage Product</NavLink></li>
                   </ul>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/dashboard">Contact</NavLink>
+                  <NavLink className="nav-link" to="/manage_contact">Contact</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/dashboard">Customer</NavLink>
+                  <NavLink className="nav-link" to="/Manage_customer">Customer</NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/login">Logout</NavLink>

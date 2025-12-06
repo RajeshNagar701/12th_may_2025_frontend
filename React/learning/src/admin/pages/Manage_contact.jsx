@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function Manage_categories() {
+function Manage_contact() {
     return (
         <div>
             <div className="container-fluid bg-light py-5">
                 <div className="col-md-6 m-auto text-center">
-                    <h1 className="h1">Manage Categories</h1>
+                    <h1 className="h1">Manage Contact</h1>
 
                 </div>
             </div>
@@ -17,7 +17,7 @@ function Manage_categories() {
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Cate Name</th>
+                                    <th>Prod Name</th>
                                     <th>Image</th>
                                     <th className='text-center'>Action</th>
                                 </tr>
@@ -42,4 +42,4 @@ function Manage_categories() {
     )
 }
 
-export default Manage_categories
+export default Manage_contact
