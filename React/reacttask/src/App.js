@@ -14,6 +14,7 @@ import Main_props from "./Props/Main_props";
 import MainReactBootstrap from "./ReactBootstrap/MainReactBootstrap";
 import App_routing from "./Routing_src/App_routing";
 import Sass from "./Sass/Sass";
+import Styled_component from "./Styled_component/Styled_component";
 
 
 function App() {
@@ -42,8 +43,12 @@ function App() {
          //<App_routing/>
 
          //<MainReactBootstrap/>
-         <MUI/>
+         // <MUI/>
+         
+        <Styled_component/>   
+
       }
+      
       
     </div>
   );
