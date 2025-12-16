@@ -2,15 +2,15 @@ import React, { Component } from 'react'
 
 export class Life_img extends Component {
 
-    // function autocall when component load
-    componentDidMount(){
-        console.log('Component Birth');
-    }
+   // Component Mounting 
+   componentDidMount(){
+    console.log('Component Mounting (Creation)');
+   }
 
-     // function autocall when component unload
-    componentWillUnmount(){
-        console.log('Component Death');
-    }
+   // Component Unmounting 
+   componentWillUnmount(){
+    console.log('Component Unmounting (Removal)');
+   }
 
     render() {
         return (

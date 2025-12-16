@@ -32,8 +32,6 @@ var [mydata,setMydata]=usestate({
 
 {mydata.name}
 
-
-
 */
 
 

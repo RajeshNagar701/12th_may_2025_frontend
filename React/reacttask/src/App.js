@@ -1,3 +1,5 @@
+import Life_class from "./Compo_Life_Cycle/Class/Life_class";
+import Life_func from "./Compo_Life_Cycle/Func/Life_func";
 import Class_component from "./component/Class/Class_component";
 import Func_component from "./component/Function/Func_component";
 
@@ -50,8 +52,11 @@ function App() {
          
          //state
          //<State_class/>
-         <Func_state/>
-      }
+         //<Func_state/>
+     
+         //<Life_class/>
+        <Life_func/>
+     }
       
       
     </div>

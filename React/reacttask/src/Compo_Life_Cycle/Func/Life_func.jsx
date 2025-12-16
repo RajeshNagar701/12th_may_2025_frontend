@@ -62,6 +62,8 @@ function Life_func() {
             <button className='btn btn-primary' onClick={() => setData({ ...data, isImage: true })}>Show</button>
             <button className='btn btn-primary' onClick={() => setData({ ...data, isImage: !data.isImage })}>Hide/Show</button>
 
+            <br />
+            
             {
                 data.isImage ? <Img_life /> : null
             }

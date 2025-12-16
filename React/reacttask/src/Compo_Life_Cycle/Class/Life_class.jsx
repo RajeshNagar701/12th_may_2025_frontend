@@ -20,23 +20,30 @@ export class Life_class extends Component {
         super();
         this.state = {
             number: 1,
-            isImage: true
+            isImage: false
         }
     }
-
-
-    componentDidUpdate(){
-        console.log('Component updated');
+    // Component Update 
+    componentDidUpdate() {
+        console.log('Main Component Updating (update)');
     }
 
     render() {
         return (
             <div>
+
+                <button onClick={() => this.setState({ number: this.state.number + 1 })}>+</button>
+                <h1>{this.state.number}</h1>
+                <button onClick={() => this.setState({ number: this.state.number - 1 })}>-</button>
+
+                <hr />
+
+
                 <button className='btn btn-primary' onClick={() => this.setState({ isImage: false })}>Hide</button>
                 <button className='btn btn-primary' onClick={() => this.setState({ isImage: true })}>Show</button>
                 <button className='btn btn-primary' onClick={() => this.setState({ isImage: !this.state.isImage })}>Hide/Show</button>
                 {
-                    this.state.isImage ? <Life_img/> : null
+                    this.state.isImage ? <Life_img /> : null
                 }
             </div>
         )
