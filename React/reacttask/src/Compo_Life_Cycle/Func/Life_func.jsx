@@ -49,12 +49,9 @@ function Life_func() {
         isImage: true
     });
 
-    // call automatica in all time render
-    useEffect(() => {
-        console.log('Main Component Birth');
+    useEffect(()=>{
+      console.log('Component/load/update');
     },[data.number]);
-
-
 
     return (
         <div>
