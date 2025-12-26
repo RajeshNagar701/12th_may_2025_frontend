@@ -1,7 +1,18 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function Manage_contact() {
+    useEffect(() => {
+        fetch_data();
+    }, []);
+
+    const [data, setData] = useState([]);
+
+    const fetch_data = async () => {
+        const obj = await axios.get(`http://localhost:3000/contact`);
+        setData(obj.data)
+    }
     return (
         <div>
             <div className="container-fluid bg-light py-5">
@@ -17,22 +28,31 @@ function Manage_contact() {
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Prod Name</th>
-                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Comment</th>
                                     <th className='text-center'>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Men</td>
-                                    <td><img src="https://www.w3schools.com/bootstrap5/img_avatar3.png" width="50px"alt="" /></td>
-                                    <td className='text-center'>
-                                        <button className='btn btn-danger me-2'>Delete</button>
-                                        <button className='btn btn-primary'>Edit</button>
-                                    </td>
-                                </tr>
-                                
+                                {
+                                    data.map((value, index, arr) => {
+                                        return (
+                                            <tr>
+                                                <td>{value.id}</td>
+                                                <td>{value.name}</td>
+                                                <td>{value.email}</td>
+                                                <td>{value.comment}</td>
+                                                <td className='text-center'>
+                                                    <button className='btn btn-danger me-2'>Delete</button>
+                                                    <button className='btn btn-primary'>Edit</button>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+
+
                             </tbody>
                         </table>
                     </div>

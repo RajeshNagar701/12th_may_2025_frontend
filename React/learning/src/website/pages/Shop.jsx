@@ -1,7 +1,24 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function Shop() {
+    useEffect(() => {
+        fetch_data1();
+        fetch_data2();
+    }, []);
+
+    const [data1, setData1] = useState([]);
+    const [data2, setData2] = useState([]);
+
+    const fetch_data1 = async () => {
+        const obj = await axios.get(`http://localhost:3000/categories`);
+        setData1(obj.data)
+    }
+    const fetch_data2 = async () => {
+        const obj = await axios.get(`http://localhost:3000/products`);
+        setData2(obj.data)
+    }
     return (
         <div>
             {/* Start Content */}
@@ -12,102 +29,73 @@ function Shop() {
                         <ul className="list-unstyled templatemo-accordion">
                             <li className="pb-3">
                                 <a className="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                                    Gender
-                                    <i className="fa fa-fw fa-chevron-circle-down mt-1" />
+                                    All Products
                                 </a>
-                                <ul className="collapse show list-unstyled pl-3">
-                                    <li><a className="text-decoration-none" href="#">Men</a></li>
-                                    <li><a className="text-decoration-none" href="#">Women</a></li>
-                                </ul>
                             </li>
-                            <li className="pb-3">
-                                <a className="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                                    Sale
-                                    <i className="pull-right fa fa-fw fa-chevron-circle-down mt-1" />
-                                </a>
-                                <ul id="collapseTwo" className="collapse list-unstyled pl-3">
-                                    <li><a className="text-decoration-none" href="#">Sport</a></li>
-                                    <li><a className="text-decoration-none" href="#">Luxury</a></li>
-                                </ul>
-                            </li>
-                            <li className="pb-3">
-                                <a className="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                                    Product
-                                    <i className="pull-right fa fa-fw fa-chevron-circle-down mt-1" />
-                                </a>
-                                <ul id="collapseThree" className="collapse list-unstyled pl-3">
-                                    <li><a className="text-decoration-none" href="#">Bag</a></li>
-                                    <li><a className="text-decoration-none" href="#">Sweather</a></li>
-                                    <li><a className="text-decoration-none" href="#">Sunglass</a></li>
-                                </ul>
-                            </li>
+                            {
+                                data1.map((value, index, arr) => {
+                                    return (
+                                        <li className="pb-3">
+                                            <a className="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                                                {value.name}
+                                            </a>
+                                        </li>
+                                    )
+                                })
+                            }
+
+
                         </ul>
                     </div>
                     <div className="col-lg-9">
+
                         <div className="row">
-                            <div className="col-md-6">
-                                <ul className="list-inline shop-top-menu pb-3 pt-1">
-                                    <li className="list-inline-item">
-                                        <a className="h3 text-dark text-decoration-none mr-3" href="#">All</a>
-                                    </li>
-                                    <li className="list-inline-item">
-                                        <a className="h3 text-dark text-decoration-none mr-3" href="#">Men's</a>
-                                    </li>
-                                    <li className="list-inline-item">
-                                        <a className="h3 text-dark text-decoration-none" href="#">Women's</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="col-md-6 pb-4">
-                                <div className="d-flex">
-                                    <select className="form-control">
-                                        <option>Featured</option>
-                                        <option>A to Z</option>
-                                        <option>Item</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row">
-                            
-                            <div className="col-md-4">
-                                <div className="card mb-4 product-wap rounded-0">
-                                    <div className="card rounded-0">
-                                        <img className="card-img rounded-0 img-fluid" src="assets/img/shop_02.jpg" />
-                                        <div className="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                            <ul className="list-unstyled">
-                                                <li><Link className="btn btn-success text-white" to="/shop_single"><i className="far fa-heart" /></Link></li>
-                                                <li><Link className="btn btn-success text-white mt-2" to="/shop_single"><i className="far fa-eye" /></Link></li>
-                                                <li><Link className="btn btn-success text-white mt-2" to="/shop_single"><i className="fas fa-cart-plus" /></Link></li>
-                                            </ul>
+
+                            {
+                                data2.map((value, index, arr) => {
+                                    return (
+                                        <div className="col-md-4">
+                                            <div className="card mb-4 product-wap rounded-0">
+                                                <div className="card rounded-0">
+                                                    <img className="card-img rounded-0 img-fluid" src={value.image} />
+                                                    <div className="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                                        <ul className="list-unstyled">
+                                                            <li><Link className="btn btn-success text-white" to="/shop_single"><i className="far fa-heart" /></Link></li>
+                                                            <li><Link className="btn btn-success text-white mt-2" to="/shop_single"><i className="far fa-eye" /></Link></li>
+                                                            <li><Link className="btn btn-success text-white mt-2" to="/shop_single"><i className="fas fa-cart-plus" /></Link></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div className="card-body">
+                                                    <Link href="/shop_single" className="h3 text-decoration-none">{value.name}</Link>
+                                                    <ul className="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                
+                                                        <li className="pt-2">
+                                                            <span className="product-color-dot color-dot-red float-left rounded-circle ml-1" />
+                                                            <span className="product-color-dot color-dot-blue float-left rounded-circle ml-1" />
+                                                            <span className="product-color-dot color-dot-black float-left rounded-circle ml-1" />
+                                                            <span className="product-color-dot color-dot-light float-left rounded-circle ml-1" />
+                                                            <span className="product-color-dot color-dot-green float-left rounded-circle ml-1" />
+                                                        </li>
+                                                    </ul>
+                                                    <ul className="list-unstyled d-flex justify-content-center mb-1">
+                                                        <li>
+                                                            <i className="text-warning fa fa-star" />
+                                                            <i className="text-warning fa fa-star" />
+                                                            <i className="text-warning fa fa-star" />
+                                                            <i className="text-muted fa fa-star" />
+                                                            <i className="text-muted fa fa-star" />
+                                                        </li>
+                                                    </ul>
+                                                    <p className="text-center mb-0"><del>${value.price}</del> ${value.disc_price}</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="card-body">
-                                        <Link href="/shop_single" className="h3 text-decoration-none">Oupidatat non</Link>
-                                        <ul className="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                            <li>M/L/X/XL</li>
-                                            <li className="pt-2">
-                                                <span className="product-color-dot color-dot-red float-left rounded-circle ml-1" />
-                                                <span className="product-color-dot color-dot-blue float-left rounded-circle ml-1" />
-                                                <span className="product-color-dot color-dot-black float-left rounded-circle ml-1" />
-                                                <span className="product-color-dot color-dot-light float-left rounded-circle ml-1" />
-                                                <span className="product-color-dot color-dot-green float-left rounded-circle ml-1" />
-                                            </li>
-                                        </ul>
-                                        <ul className="list-unstyled d-flex justify-content-center mb-1">
-                                            <li>
-                                                <i className="text-warning fa fa-star" />
-                                                <i className="text-warning fa fa-star" />
-                                                <i className="text-warning fa fa-star" />
-                                                <i className="text-muted fa fa-star" />
-                                                <i className="text-muted fa fa-star" />
-                                            </li>
-                                        </ul>
-                                        <p className="text-center mb-0">$250.00</p>
-                                    </div>
-                                </div>
-                            </div>
-                           
+                                    )
+                                })
+                            }
+
+
                         </div>
                         <div div="row">
                             <ul className="pagination pagination-lg justify-content-end">

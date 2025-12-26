@@ -1,7 +1,18 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function Manage_product() {
+    useEffect(() => {
+        fetch_data();
+    }, []);
+
+    const [data, setData] = useState([]);
+
+    const fetch_data = async () => {
+        const obj = await axios.get(`http://localhost:3000/products`);
+        setData(obj.data)
+    }
     return (
         <div>
             <div className="container-fluid bg-light py-5">
@@ -17,22 +28,38 @@ function Manage_product() {
                             <thead>
                                 <tr>
                                     <th>Id</th>
+                                    <th>Cate Id</th>
                                     <th>Prod Name</th>
+                                    <th>Short Desc</th>
+                                    <th>Long Desc</th>
+                                    <th>Main Price</th>
+                                    <th>Disc Price</th>
                                     <th>Image</th>
                                     <th className='text-center'>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Men</td>
-                                    <td><img src="https://www.w3schools.com/bootstrap5/img_avatar3.png" width="50px"alt="" /></td>
-                                    <td className='text-center'>
-                                        <button className='btn btn-danger me-2'>Delete</button>
-                                        <button className='btn btn-primary'>Edit</button>
-                                    </td>
-                                </tr>
-                                
+                                {
+                                    data.map((value, index, arr) => {
+                                        return (
+                                            <tr>
+                                                <td>{value.id}</td>
+                                                <td>{value.cate_id}</td>
+                                                <td>{value.name}</td>
+                                                <td>{value.sdesc}</td>
+                                                <td>{value.ldesc}</td>
+                                                <td>{value.price}</td>
+                                                <td>{value.disc_price}</td>
+                                                 <td><img src={value.image} width="50px"alt="" /></td>
+                                                <td className='text-center'>
+                                                    <button className='btn btn-danger me-2'>Delete</button>
+                                                    <button className='btn btn-primary'>Edit</button>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+
                             </tbody>
                         </table>
                     </div>
