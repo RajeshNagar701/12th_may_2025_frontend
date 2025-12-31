@@ -13,6 +13,16 @@ function Manage_product() {
         const obj = await axios.get(`http://localhost:3000/products`);
         setData(obj.data)
     }
+    const deleteHandel = async (id) => {
+        const obj = await axios.delete(`http://localhost:3000/products/${id}`);
+        fetch_data();
+        alert('delete success');
+        return false;
+    }
+
+    
+
+
     return (
         <div>
             <div className="container-fluid bg-light py-5">
@@ -52,7 +62,7 @@ function Manage_product() {
                                                 <td>{value.disc_price}</td>
                                                  <td><img src={value.image} width="50px"alt="" /></td>
                                                 <td className='text-center'>
-                                                    <button className='btn btn-danger me-2'>Delete</button>
+                                                    <button className='btn btn-danger me-2' onClick={()=>deleteHandel(value.id)}>Delete</button>
                                                     <button className='btn btn-primary'>Edit</button>
                                                 </td>
                                             </tr>

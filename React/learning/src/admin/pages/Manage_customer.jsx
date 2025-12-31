@@ -13,6 +13,13 @@ function Manage_customer() {
       const obj=await axios.get(`http://localhost:3000/customer`);
       setData(obj.data)
     }
+
+    const deleteHandel = async (id) => {
+        const obj = await axios.delete(`http://localhost:3000/customer/${id}`);
+        fetch_data();
+        alert('delete success');
+        return false;
+    }
     return (
         <div>
             <div className="container-fluid bg-light py-5">
@@ -46,7 +53,7 @@ function Manage_customer() {
                                                 <td>{value.mobile}</td>
                                                 <td>{value.status}</td>
                                                 <td className='text-center'>
-                                                    <button className='btn btn-danger me-2'>Delete</button>
+                                                    <button className='btn btn-danger me-2' onClick={()=>deleteHandel(value.id)}>Delete</button>
                                                     <button className='btn btn-primary'>Edit</button>
                                                 </td>
                                             </tr>

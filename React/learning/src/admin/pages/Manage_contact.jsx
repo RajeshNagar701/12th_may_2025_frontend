@@ -13,6 +13,15 @@ function Manage_contact() {
         const obj = await axios.get(`http://localhost:3000/contact`);
         setData(obj.data)
     }
+
+    const deleteHandel = async (id) => {
+        const obj = await axios.delete(`http://localhost:3000/contact/${id}`);
+        fetch_data();
+        alert('delete success');
+        return false;
+    }
+
+    
     return (
         <div>
             <div className="container-fluid bg-light py-5">
@@ -43,8 +52,8 @@ function Manage_contact() {
                                                 <td>{value.name}</td>
                                                 <td>{value.email}</td>
                                                 <td>{value.comment}</td>
-                                                <td className='text-center'>
-                                                    <button className='btn btn-danger me-2'>Delete</button>
+                                                <td className='text-center'>8
+                                                    <button className='btn btn-danger me-2' onClick={()=>deleteHandel(value.id)}>Delete</button>
                                                     <button className='btn btn-primary'>Edit</button>
                                                 </td>
                                             </tr>

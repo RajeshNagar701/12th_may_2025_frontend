@@ -57,7 +57,7 @@ function Shop() {
                                         <div className="col-md-4">
                                             <div className="card mb-4 product-wap rounded-0">
                                                 <div className="card rounded-0">
-                                                    <img className="card-img rounded-0 img-fluid" src={value.image} />
+                                                    <img className="card-img rounded-0 img-fluid" src={value.image}height="100px" />
                                                     <div className="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                                         <ul className="list-unstyled">
                                                             <li><Link className="btn btn-success text-white" to="/shop_single"><i className="far fa-heart" /></Link></li>
