@@ -1,10 +1,16 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 function AHeader() {
+  const redirect = useNavigate();
+  const adminlogout = () => {
+    sessionStorage.removeItem('s_aid');
+    sessionStorage.removeItem('s_aname');
+    alert('Logout Suucess');
+    redirect('/admin-login');
+  }
   return (
     <div>
-
       <nav className="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
         <div className="container text-light">
           <div className="w-100 d-flex justify-content-between">
@@ -39,7 +45,7 @@ function AHeader() {
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/dashboard">Dashboard</NavLink>
                 </li>
-              
+
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Categoriest</a>
                   <ul className="dropdown-menu">
@@ -48,7 +54,7 @@ function AHeader() {
                   </ul>
                 </li>
 
-                 <li className="nav-item dropdown">
+                <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Product</a>
                   <ul className="dropdown-menu">
                     <li><NavLink className="dropdown-item" to="/add_product">Add Product</NavLink></li>
@@ -62,12 +68,12 @@ function AHeader() {
                   <NavLink className="nav-link" to="/Manage_customer">Customer</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/login">Logout</NavLink>
+                  <a className="nav-link" to="#" onClick={adminlogout}>Logout</a>
                 </li>
 
               </ul>
             </div>
-     
+
           </div>
         </div>
       </nav>

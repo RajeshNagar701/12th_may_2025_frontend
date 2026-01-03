@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 function Manage_contact() {
     useEffect(() => {
         fetch_data();
-    }, []);
+    });
 
     const [data, setData] = useState([]);
 

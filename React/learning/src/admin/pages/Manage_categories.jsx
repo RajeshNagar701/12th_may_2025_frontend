@@ -6,7 +6,7 @@ function Manage_categories() {
 
     useEffect(()=>{
         fetch_data();
-    },[]);
+    });
 
     const [data,setData]=useState([]);
     /*

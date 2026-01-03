@@ -1,7 +1,16 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 function Header() {
+
+  const redirect=useNavigate();
+  const userlogout=()=>{
+    sessionStorage.removeItem('s_id');
+    sessionStorage.removeItem('s_name');
+    alert('Logout Suucess');
+    redirect('/');
+  }
+
   return (
     <div>
 
@@ -48,16 +57,35 @@ function Header() {
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/contact">Contact</NavLink>
                 </li>
-                <li className="nav-item dropdown">
-                  <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">My Account</a>
-                  <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="#">Profile</a></li>
-                    <li><a className="dropdown-item" href="#">Logout</a></li>
-                  </ul>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/login">Login</NavLink>
-                </li>
+                {(
+                  () => {
+                    if (sessionStorage.getItem('s_id')) {
+                      return (
+                        <li className="nav-item dropdown">
+                          <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">My Account</a>
+                          <ul className="dropdown-menu">
+                            <li><a className="dropdown-item" href="#">Profile</a></li>
+                            <li><a className="dropdown-item" href="#" onClick={userlogout}>Logout</a></li>
+                          </ul>
+                        </li>
+                      )
+                    }
+                  }
+                )()}
+
+
+                {(
+                  () => {
+                    if (!sessionStorage.getItem('s_id')) {
+                      return (
+                        <li className="nav-item">
+                          <NavLink className="nav-link" to="/login">Login</NavLink>
+                        </li>
+                      )
+                    }
+                  }
+                )()}
+
 
               </ul>
             </div>
@@ -77,10 +105,19 @@ function Header() {
                 <i className="fa fa-fw fa-cart-arrow-down text-dark mr-1" />
                 <span className="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
               </a>
-              <a className="nav-icon position-relative text-decoration-none" href="#">
-                <i className="fa fa-fw fa-user text-dark mr-3" />
-                <span className="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-              </a>
+
+              {(
+                () => {
+                  if (sessionStorage.getItem('s_id')) {
+                    return (
+                      <a className="nav-icon position-relative text-decoration-none" href="#">
+                        <i className="fa fa-fw fa-user text-dark mr-3" /> Hi ...{sessionStorage.getItem('s_name')}
+                      </a>
+                    )
+                  }
+                }
+              )()}
+
             </div>
           </div>
         </div>

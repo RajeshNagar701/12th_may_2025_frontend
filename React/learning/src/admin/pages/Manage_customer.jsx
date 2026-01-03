@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 function Manage_customer() {
     useEffect(()=>{
         fetch_data();
-    },[]);
+    });
 
     const [data,setData]=useState([]);
     
