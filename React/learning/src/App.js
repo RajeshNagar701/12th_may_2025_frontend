@@ -18,30 +18,47 @@ import Add_product from "./admin/pages/Add_product";
 import Manage_product from "./admin/pages/Manage_product";
 import Manage_contact from "./admin/pages/Manage_contact";
 import Manage_customer from "./admin/pages/Manage_customer";
+import User_profile from "./website/pages/User_profile";
+import UAfter_login from "./website/pages/UAfter_login";
+import UBefore_login from "./website/pages/UBefore_login";
+import ABefore_login from "./admin/pages/ABefore_login";
+import AAfter_login from "./admin/pages/AAfter_login";
 
 function App() {
   return (
     <div >
       <BrowserRouter>
         <Routes>
-          
+
           <Route path="/" element={<><Header /><Home /><Footer /></>}></Route>
           <Route path="/about" element={<><Header /><About /><Footer /></>}></Route>
           <Route path="/contact" element={<><Header /><Contact /><Footer /></>}></Route>
           <Route path="/shop" element={<><Header /><Shop /><Footer /></>}></Route>
           <Route path="/shop_single" element={<><Header /><Shop_single /><Footer /></>}></Route>
-          <Route path="/login" element={<><Header /><Login /><Footer /></>}></Route>
-          <Route path="/signup" element={<><Header /><Signup /><Footer /></>}></Route>
-          
-          <Route path="/admin-login" element={<><Admin_login /></>}></Route>
-          <Route path="/dashboard" element={<><AHeader /><Dashboard /><AFooter /></>}></Route>
-          <Route path="/add_categories" element={<><AHeader /><Add_categories /><AFooter /></>}></Route>
-          <Route path="/manage_categories" element={<><AHeader /><Manage_categories/><AFooter /></>}></Route>
-          <Route path="/add_product" element={<><AHeader /><Add_product /><AFooter /></>}></Route>
-          <Route path="/manage_product" element={<><AHeader /><Manage_product/><AFooter /></>}></Route>
-          <Route path="/manage_contact" element={<><AHeader /><Manage_contact/><AFooter /></>}></Route>
-          <Route path="/manage_customer" element={<><AHeader /><Manage_customer/><AFooter /></>}></Route>
-          
+
+          <Route element={<UBefore_login />}>
+            <Route path="/login" element={<><Header /><Login /><Footer /></>}></Route>
+            <Route path="/signup" element={<><Header /><Signup /><Footer /></>}></Route>
+          </Route>
+
+          <Route element={<UAfter_login />}>
+            <Route path="/user_profile" element={<><Header /><User_profile /><Footer /></>}></Route>
+          </Route>
+
+
+          <Route element={<ABefore_login />}>
+            <Route path="/admin-login" element={<><Admin_login /></>}></Route>
+          </Route>
+
+          <Route element={<AAfter_login />}>
+            <Route path="/dashboard" element={<><AHeader /><Dashboard /><AFooter /></>}></Route>
+            <Route path="/add_categories" element={<><AHeader /><Add_categories /><AFooter /></>}></Route>
+            <Route path="/manage_categories" element={<><AHeader /><Manage_categories /><AFooter /></>}></Route>
+            <Route path="/add_product" element={<><AHeader /><Add_product /><AFooter /></>}></Route>
+            <Route path="/manage_product" element={<><AHeader /><Manage_product /><AFooter /></>}></Route>
+            <Route path="/manage_contact" element={<><AHeader /><Manage_contact /><AFooter /></>}></Route>
+            <Route path="/manage_customer" element={<><AHeader /><Manage_customer /><AFooter /></>}></Route>
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>

@@ -64,7 +64,7 @@ function Header() {
                         <li className="nav-item dropdown">
                           <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">My Account</a>
                           <ul className="dropdown-menu">
-                            <li><a className="dropdown-item" href="#">Profile</a></li>
+                            <li><NavLink className="dropdown-item" to="/user_profile">Profile</NavLink></li>
                             <li><a className="dropdown-item" href="#" onClick={userlogout}>Logout</a></li>
                           </ul>
                         </li>

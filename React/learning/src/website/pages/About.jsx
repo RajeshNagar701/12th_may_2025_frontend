@@ -1,13 +1,13 @@
 import React from 'react'
 
-function Dashboard() {
+function About() {
     return (
         <div>
             <section className="bg-success py-5">
                 <div className="container">
                     <div className="row align-items-center py-5">
                         <div className="col-md-8 text-white">
-                            <h1>Dashboard</h1>
+                            <h1>About Us</h1>
                         </div>
                         <div className="col-md-4">
                             <img src="assets/img/about-hero.svg" alt="About Hero" />
@@ -157,4 +157,4 @@ function Dashboard() {
     )
 }
 
-export default Dashboard
+export default About
