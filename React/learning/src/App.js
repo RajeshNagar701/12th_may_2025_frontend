@@ -24,17 +24,23 @@ import UBefore_login from "./website/pages/UBefore_login";
 import ABefore_login from "./admin/pages/ABefore_login";
 import AAfter_login from "./admin/pages/AAfter_login";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Edit_user from "./website/pages/Edit_user";
+
+
 function App() {
   return (
     <div >
       <BrowserRouter>
+        <ToastContainer></ToastContainer>
+        
         <Routes>
-
           <Route path="/" element={<><Header /><Home /><Footer /></>}></Route>
           <Route path="/about" element={<><Header /><About /><Footer /></>}></Route>
           <Route path="/contact" element={<><Header /><Contact /><Footer /></>}></Route>
           <Route path="/shop" element={<><Header /><Shop /><Footer /></>}></Route>
-          <Route path="/shop_single" element={<><Header /><Shop_single /><Footer /></>}></Route>
+          <Route path="/shop_single/:id" element={<><Header /><Shop_single /><Footer /></>}></Route>
 
           <Route element={<UBefore_login />}>
             <Route path="/login" element={<><Header /><Login /><Footer /></>}></Route>
@@ -43,6 +49,7 @@ function App() {
 
           <Route element={<UAfter_login />}>
             <Route path="/user_profile" element={<><Header /><User_profile /><Footer /></>}></Route>
+            <Route path="/edit_user/:id" element={<><Header /><Edit_user /><Footer /></>}></Route>
           </Route>
 
 

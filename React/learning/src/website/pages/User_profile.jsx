@@ -1,6 +1,22 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 function User_profile() {
+
+    const redirect=useNavigate();
+
+    useEffect(() => {
+        fetch_data();
+    });
+
+    const [data, setData] = useState({});
+
+    const fetch_data = async () => {
+        const obj = await axios.get(`http://localhost:3000/customer/${sessionStorage.getItem('s_id')}`);
+        setData(obj.data)
+    }
+    
     return (
         <div>
             <section className="bg-success py-5">
@@ -22,33 +38,21 @@ function User_profile() {
                     <div className="col-lg-6 m-auto">
                         <h1 className="h1">My Profile</h1>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            Lorem ipsum dolor sit amet.
+                           Hi.. {data.name}
                         </p>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-12 offset-md-3 col-md-6 mb-4">
                         <div className="card h-100">
-                            <a href="shop-single.html">
-                                <img src="./assets/img/feature_prod_01.jpg" className="card-img-top" alt="..." />
-                            </a>
+                           
                             <div className="card-body">
-                                <ul className="list-unstyled d-flex justify-content-between">
-                                    <li>
-                                        <i className="text-warning fa fa-star" />
-                                        <i className="text-warning fa fa-star" />
-                                        <i className="text-warning fa fa-star" />
-                                        <i className="text-muted fa fa-star" />
-                                        <i className="text-muted fa fa-star" />
-                                    </li>
-                                    <li className="text-muted text-right">$240.00</li>
-                                </ul>
-                                <a href="shop-single.html" className="h2 text-decoration-none text-dark">Gym Weight</a>
-                                <p className="card-text">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia deserunt.
-                                </p>
-                                <p className="text-muted">Reviews (24)</p>
+                                <p className="h2 text-decoration-none text-dark">ID : {data.id}</p>
+                                <p className="h2 text-decoration-none text-dark">Name : {data.name}</p>
+                                <p className="h2 text-decoration-none text-dark">Email : {data.email}</p>
+                                <p className="h2 text-decoration-none text-dark">Mobile : {data.mobile}</p>
+                                <p className="h2 text-decoration-none text-dark">status : {data.status}</p>
+                                <button className='btn btn-primary' onClick={()=>redirect(`/edit_user/${data.id}`)}>Edit Profile</button>
                             </div>
                         </div>
                     </div>

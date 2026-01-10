@@ -52,7 +52,7 @@ function Manage_contact() {
                                                 <td>{value.name}</td>
                                                 <td>{value.email}</td>
                                                 <td>{value.comment}</td>
-                                                <td className='text-center'>8
+                                                <td className='text-center'>
                                                     <button className='btn btn-danger me-2' onClick={()=>deleteHandel(value.id)}>Delete</button>
                                                     <button className='btn btn-primary'>Edit</button>
                                                 </td>

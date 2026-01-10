@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Shop() {
     useEffect(() => {
@@ -19,6 +19,9 @@ function Shop() {
         const obj = await axios.get(`http://localhost:3000/products`);
         setData2(obj.data)
     }
+
+
+    const redirect=useNavigate();
     return (
         <div>
             {/* Start Content */}
@@ -60,9 +63,9 @@ function Shop() {
                                                     <img className="card-img rounded-0 img-fluid" src={value.image}height="100px" />
                                                     <div className="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                                         <ul className="list-unstyled">
-                                                            <li><Link className="btn btn-success text-white" to="/shop_single"><i className="far fa-heart" /></Link></li>
-                                                            <li><Link className="btn btn-success text-white mt-2" to="/shop_single"><i className="far fa-eye" /></Link></li>
-                                                            <li><Link className="btn btn-success text-white mt-2" to="/shop_single"><i className="fas fa-cart-plus" /></Link></li>
+                                                            <li><button className="btn btn-success text-white" onClick={()=>redirect(`/shop_single/${value.id}`)}><i className="far fa-heart" /></button></li>
+                                                            <li><button className="btn btn-success text-white mt-2"onClick={()=>redirect(`/shop_single/${value.id}`)}><i className="far fa-eye" /></button></li>
+                                                            <li><button className="btn btn-success text-white mt-2" onClick={()=>redirect(`/shop_single/${value.id}`)}><i className="fas fa-cart-plus" /></button></li>
                                                         </ul>
                                                     </div>
                                                 </div>

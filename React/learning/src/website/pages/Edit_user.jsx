@@ -1,19 +1,31 @@
 import axios from 'axios';
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, redirect, useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify';
 
-function Signup() {
+function Edit_user() {
 
+    useEffect(() => {
+        edit_data();
+    },[]);
+
+    const {id}=useParams(); // we can get url id from route
+
+    const edit_data = async () => {
+        const obj = await axios.get(`http://localhost:3000/customer/${id}`);
+        setData(obj.data)
+    }
+    
+
+    //====================================================================
     const [obj_cate, setData] = useState({
         name: "",
         email: "",
-        password: "",
         mobile: "",
     });
 
     const changeHandel = (e) => {
-        setData({ ...obj_cate, id: new Date().getTime().toString(), status: "Unblock", [e.target.name]: e.target.value });
+        setData({ ...obj_cate,[e.target.name]: e.target.value });
         console.log(obj_cate);
     }
 
@@ -29,11 +41,6 @@ function Signup() {
             toast.error('Email field is required !');
             return false;
         }
-        if (obj_cate.password == "" || obj_cate.password == null) {
-            result = false;
-            toast.error('password field is required !');
-            return false;
-        }
         if (obj_cate.mobile == "" || obj_cate.mobile == null) {
             result = false;
             toast.error('mobile field is required !');
@@ -41,12 +48,15 @@ function Signup() {
         }
         return result;
     }
+
+    const redirect=useNavigate();
     const submitHandel = async (e) => {
         e.preventDefault();
         if (validation()) {
-            const obj = await axios.post(`http://localhost:3000/customer`, obj_cate);
-            setData({ ...obj_cate, name: "", email: "", password: "", mobile: "" });
-            alert('Signup success');
+            const obj = await axios.put(`http://localhost:3000/customer/${obj_cate.id}`, obj_cate);
+            setData({ ...obj_cate, name: "", email: "", mobile: "" });
+            toast.success('Update Success');
+            redirect('/user_profile');
             return false;
         }
     }
@@ -55,7 +65,7 @@ function Signup() {
         <div>
             <div className="container-fluid bg-light py-5">
                 <div className="col-md-6 m-auto text-center">
-                    <h1 className="h1">Signup Us</h1>
+                    <h1 className="h1">Edit Profile</h1>
 
                 </div>
             </div>
@@ -72,10 +82,6 @@ function Signup() {
                                 <input type="email" value={obj_cate.email} onChange={changeHandel} className="form-control mt-1" id="email" name="email" placeholder="Email" />
                             </div>
                             <div className="form-group col-md-12 mb-3">
-                                <label htmlFor="inputname">Password</label>
-                                <input type="password" value={obj_cate.password} onChange={changeHandel} className="form-control mt-1" id="name" name="password" placeholder="Password" />
-                            </div>
-                            <div className="form-group col-md-12 mb-3">
                                 <label htmlFor="inputname">Mobile</label>
                                 <input type="number" value={obj_cate.mobile} onChange={changeHandel} className="form-control mt-1" id="name" name="mobile" placeholder="Mobile" />
                             </div>
@@ -83,19 +89,15 @@ function Signup() {
 
                         <div className="row">
                             <div className="col text-end mt-2">
-                                <button type="submit" className="btn btn-success btn-lg px-3">Signup</button>
+                                <button type="submit" className="btn btn-success btn-lg px-3">Save</button>
                             </div>
                         </div>
                     </form>
-                    <div className="row">
-                        <div className="col text-start mt-2">
-                            <Link to="/login">If You already registered then Login Here</Link>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
     )
 }
 
-export default Signup
+export default Edit_user

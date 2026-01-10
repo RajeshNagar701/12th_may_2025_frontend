@@ -1,6 +1,22 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
 function Shop_single() {
+
+
+     useEffect(() => {
+        edit_data();
+    },[]);
+
+    const {id}=useParams(); // we can get url id from route
+    const [data, setData] = useState({});
+    const edit_data = async () => {
+        const obj = await axios.get(`http://localhost:3000/products/${id}`);
+        setData(obj.data)
+    }
+    
+
     return (
         <div>
             {/* Open Content */}
@@ -9,104 +25,16 @@ function Shop_single() {
                     <div className="row">
                         <div className="col-lg-5 mt-5">
                             <div className="card mb-3">
-                                <img className="card-img img-fluid" src="assets/img/product_single_10.jpg" alt="Card image cap" id="product-detail" />
+                                <img className="card-img img-fluid" src={data.image} alt="Card image cap" id="product-detail" />
                             </div>
-                            <div className="row">
-                                {/*Start Controls*/}
-                                <div className="col-1 align-self-center">
-                                    <a href="#multi-item-example" role="button" data-bs-slide="prev">
-                                        <i className="text-dark fas fa-chevron-left" />
-                                        <span className="sr-only">Previous</span>
-                                    </a>
-                                </div>
-                                {/*End Controls*/}
-                                {/*Start Carousel Wrapper*/}
-                                <div id="multi-item-example" className="col-10 carousel slide carousel-multi-item" data-bs-ride="carousel">
-                                    {/*Start Slides*/}
-                                    <div className="carousel-inner product-links-wap" role="listbox">
-                                        {/*First slide*/}
-                                        <div className="carousel-item active">
-                                            <div className="row">
-                                                <div className="col-4">
-                                                    <a href="#">
-                                                        <img className="card-img img-fluid" src="assets/img/product_single_01.jpg" alt="Product Image 1" />
-                                                    </a>
-                                                </div>
-                                                <div className="col-4">
-                                                    <a href="#">
-                                                        <img className="card-img img-fluid" src="assets/img/product_single_02.jpg" alt="Product Image 2" />
-                                                    </a>
-                                                </div>
-                                                <div className="col-4">
-                                                    <a href="#">
-                                                        <img className="card-img img-fluid" src="assets/img/product_single_03.jpg" alt="Product Image 3" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {/*/.First slide*/}
-                                        {/*Second slide*/}
-                                        <div className="carousel-item">
-                                            <div className="row">
-                                                <div className="col-4">
-                                                    <a href="#">
-                                                        <img className="card-img img-fluid" src="assets/img/product_single_04.jpg" alt="Product Image 4" />
-                                                    </a>
-                                                </div>
-                                                <div className="col-4">
-                                                    <a href="#">
-                                                        <img className="card-img img-fluid" src="assets/img/product_single_05.jpg" alt="Product Image 5" />
-                                                    </a>
-                                                </div>
-                                                <div className="col-4">
-                                                    <a href="#">
-                                                        <img className="card-img img-fluid" src="assets/img/product_single_06.jpg" alt="Product Image 6" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {/*/.Second slide*/}
-                                        {/*Third slide*/}
-                                        <div className="carousel-item">
-                                            <div className="row">
-                                                <div className="col-4">
-                                                    <a href="#">
-                                                        <img className="card-img img-fluid" src="assets/img/product_single_07.jpg" alt="Product Image 7" />
-                                                    </a>
-                                                </div>
-                                                <div className="col-4">
-                                                    <a href="#">
-                                                        <img className="card-img img-fluid" src="assets/img/product_single_08.jpg" alt="Product Image 8" />
-                                                    </a>
-                                                </div>
-                                                <div className="col-4">
-                                                    <a href="#">
-                                                        <img className="card-img img-fluid" src="assets/img/product_single_09.jpg" alt="Product Image 9" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {/*/.Third slide*/}
-                                    </div>
-                                    {/*End Slides*/}
-                                </div>
-                                {/*End Carousel Wrapper*/}
-                                {/*Start Controls*/}
-                                <div className="col-1 align-self-center">
-                                    <a href="#multi-item-example" role="button" data-bs-slide="next">
-                                        <i className="text-dark fas fa-chevron-right" />
-                                        <span className="sr-only">Next</span>
-                                    </a>
-                                </div>
-                                {/*End Controls*/}
-                            </div>
+                            
                         </div>
                         {/* col end */}
                         <div className="col-lg-7 mt-5">
                             <div className="card">
                                 <div className="card-body">
-                                    <h1 className="h2">Active Wear</h1>
-                                    <p className="h3 py-2">$25.00</p>
+                                    <h1 className="h2">{data.name}</h1>
+                                    <p className="h3 py-2">${data.price}</p>
                                     <p className="py-2">
                                         <i className="fa fa-star text-warning" />
                                         <i className="fa fa-star text-warning" />
@@ -124,7 +52,7 @@ function Shop_single() {
                                         </li>
                                     </ul>
                                     <h6>Description:</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse. Donec condimentum elementum convallis. Nunc sed orci a diam ultrices aliquet interdum quis nulla.</p>
+                                    <p>{data.ldesc}</p>
                                     <ul className="list-inline">
                                         <li className="list-inline-item">
                                             <h6>Avaliable Color :</h6>

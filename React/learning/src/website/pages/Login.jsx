@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
 
 function Login() {
 
-    const redirect=useNavigate();
+    const redirect = useNavigate();
 
     const [obj_cate, setData] = useState({
         email: "",
@@ -16,40 +17,52 @@ function Login() {
         console.log(obj_cate);
     }
 
+    const validation = () => {
+        var result = true;
+
+        if (obj_cate.email == "" || obj_cate.email == null) {
+            result = false;
+            toast.error('Email field is required !');
+            return false;
+        }
+        if (obj_cate.password == "" || obj_cate.password == null) {
+            result = false;
+            toast.error('password field is required !');
+            return false;
+        }
+        return result;
+    }
     const submitHandel = async (e) => {
         e.preventDefault();
-        const obj=await axios.get(`http://localhost:3000/customer?email=${obj_cate.email}`); 
-        //console.log(obj.data);
-        if(obj.data.length>0){
-            if(obj.data[0].password==obj_cate.password)
-            {
-                if(obj.data[0].status=="Unblock")
-                {
-                    //session created
-                    sessionStorage.setItem('s_id',obj.data[0].id);
-                    sessionStorage.setItem('s_name',obj.data[0].name);
+        if (validation()) {
+            const obj = await axios.get(`http://localhost:3000/customer?email=${obj_cate.email}`);
+            //console.log(obj.data);
+            if (obj.data.length > 0) {
+                if (obj.data[0].password == obj_cate.password) {
+                    if (obj.data[0].status == "Unblock") {
+                        //session created
+                        sessionStorage.setItem('s_id', obj.data[0].id);
+                        sessionStorage.setItem('s_name', obj.data[0].name);
 
-                    alert('Login Success ');
-                    redirect('/');
+                        alert('Login Success ');
+                        redirect('/');
+                    }
+                    else {
+                        alert('Login Failed Due to Blocked Account');
+                        return false;
+                    }
                 }
-                else
-                {
-                    alert('Login Failed Due to Blocked Account');
+                else {
+                    alert('Login Failed Due to Wrong Password');
                     return false;
                 }
             }
-            else
-            {
-                alert('Login Failed Due to Wrong Password');
+            else {
+                alert('Login Failed Due to Wrong Email');
                 return false;
             }
-        }
-        else
-        {
-            alert('Login Failed Due to Wrong Email');
             return false;
         }
-        return false;
     }
     return (
         <div>
