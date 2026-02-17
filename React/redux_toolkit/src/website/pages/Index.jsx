@@ -1,15 +1,19 @@
 import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { useSelector } from 'react-redux'
 
 function Index() {
+
+    const {customers,name}=useSelector((state)=>state.customer);
+
     return (
         <div>
             <Header title="Dashboard"/>
             <div className="container mt-5">
                 <div className="row">
                     <div className="col-sm-12">
-                        <h2>Dashboard</h2>
+                        <h2>Dashboard : {name}</h2>
                         <h5>Photo of me:</h5>
                         <div className="fakeimg">Fake Image</div>
                         <p>Some text about me in culpa qui officia deserunt mollit anim..</p>

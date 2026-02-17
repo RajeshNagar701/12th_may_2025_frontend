@@ -2,11 +2,12 @@ import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 
 function Manage_user() {
     const redirect = useNavigate();
 
-
+    const { customers } = useSelector((state) => state.customer);
     return (
         <div>
             <Header title="Manage User" />
@@ -25,16 +26,22 @@ function Manage_user() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>John</td>
-                                        <td>Doe</td>
-                                        <td>john@example.com</td>
-                                        <td>
-                                            <button className='btn btn-primary' onClick={()=>redirect('/edit_user')}>Edit</button>
-                                            <button className='btn btn-danger'>Delete</button>
-                                        </td>
-                                    </tr>
-                                  
+                                    {
+                                        customers && customers.map((value) => {
+                                            return (
+                                            <tr>
+                                                <td>{value.id}</td>
+                                                <td>{value.name}</td>
+                                                <td>{value.email}</td>
+                                                <td>{value.mobile}</td>
+                                                <td>
+                                                    <button className='btn btn-primary' onClick={() => redirect('/edit_user')}>Edit</button>
+                                                    <button className='btn btn-danger'>Delete</button>
+                                                </td>
+                                            </tr>)
+                                        })
+                                    }
+
 
                                 </tbody>
                             </table>

@@ -1,20 +1,36 @@
 {
-    "customer": [
-        {
-            "id": "1767426117333",
-            "name": "nirav",
-            "email": "nirav@gmail.com",
-            "password": "1234",
-            "mobile": "12222222365",
-            "status": "Unblock"
-        },
-        {
-            "id": "1767426246421",
-            "name": "raj",
-            "email": "raj@gmail.com",
-            "password": "abc",
-            "mobile": "456465464654",
-            "status": "Unblock"
-        }
-    ]
+  "customer": [
+    {
+      "id": "1767426117333",
+      "name": "nirav",
+      "email": "nirav@gmail.com",
+      "password": "1234",
+      "mobile": "12222222365",
+      "status": "Unblock"
+    },
+    {
+      "id": "1767426246421",
+      "name": "raj",
+      "email": "raj@gmail.com",
+      "password": "abc",
+      "mobile": "456465464654",
+      "status": "Unblock"
+    },
+    {
+      "id": "1771314562543",
+      "name": "nirav",
+      "email": "nirav@gmail.com",
+      "password": "1234",
+      "mobile": "1236458889",
+      "status": "Unblock"
+    },
+    {
+      "id": "1771314928968",
+      "name": "pavan",
+      "email": "pavan@gmail.com",
+      "password": "1234",
+      "mobile": "1234567891",
+      "status": "Unblock"
+    }
+  ]
 }

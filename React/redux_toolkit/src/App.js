@@ -5,10 +5,15 @@ import Manage_user from "./website/pages/Manage_user";
 import Edit_user from "./website/pages/Edit_user";
 import Pnf from "./website/pages/Pnf";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 function App() {
   return (
     <div>
       <BrowserRouter>
+      <ToastContainer></ToastContainer>
         <Routes>
           <Route path="/" element={<Index/> }></Route>
           <Route path="/add_user" element={<Add_user/> }></Route>
