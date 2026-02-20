@@ -1,25 +1,20 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Index from "./website/pages/Index";
-import Add_user from "./website/pages/Add_user";
-import Manage_user from "./website/pages/Manage_user";
-import Edit_user from "./website/pages/Edit_user";
-import Pnf from "./website/pages/Pnf";
+import Dashboard from "./feature/website/pages/Dashboard";
+import Add_user from "./feature/website/pages/Add_user";
+import Manage_user from "./feature/website/pages/Manage_user";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 
 function App() {
   return (
     <div>
       <BrowserRouter>
-      <ToastContainer></ToastContainer>
+        <ToastContainer></ToastContainer>
         <Routes>
-          <Route path="/" element={<Index/> }></Route>
-          <Route path="/add_user" element={<Add_user/> }></Route>
-          <Route path="/manage_user" element={<Manage_user/> }></Route>
-          <Route path="/edit_user" element={<Edit_user/> }></Route>
-          <Route path="*" element={<Pnf/> }></Route>
+          <Route path="/" element={<Dashboard />}></Route>
+          <Route path="/add_user" element={<Add_user />}></Route>
+          <Route path="/manage_user" element={<Manage_user />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
