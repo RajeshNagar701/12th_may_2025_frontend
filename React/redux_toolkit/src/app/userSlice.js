@@ -13,6 +13,16 @@ export const insert_user=createAsyncThunk('insert_user',async(object)=>{
     return res.data;
 });
 
+export const delete_user=createAsyncThunk('delete_user',async(id)=>{
+    const res=await axios.delete(`http://localhost:3000/user/${id}`);
+    return res.data;
+});
+
+export const update_user=createAsyncThunk('update_user',async(object)=>{
+    const res=await axios.patch(`http://localhost:3000/user/${object.id}`,object);
+    return res.data;
+});
+
 export const userSice=createSlice({
     name:'userSice',
     initialState:{

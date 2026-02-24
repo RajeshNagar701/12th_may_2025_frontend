@@ -1,47 +1,20 @@
 {
   "user": [
     {
-      "id": "1767426117333",
-      "name": "nirav",
+      "id": "1771752960104",
+      "name": "Nirav nagar",
       "email": "nirav@gmail.com",
       "password": "1234",
-      "mobile": "12222222365",
-      "status": "Unblock"
-    },
+      "mobile": "1234",
+      "status": "Block"
+    }
+  ],
+  "contact": [
     {
-      "id": "1767426246421",
-      "name": "raj",
-      "email": "raj@gmail.com",
-      "password": "abc",
-      "mobile": "456465464654",
-      "status": "Unblock"
-    },
-    {
-      "id": "1771314562543",
-      "name": "nirav",
-      "email": "nirav@gmail.com",
-      "password": "1234",
-      "mobile": "1236458889",
-      "status": "Unblock"
-    },
-    {
-      "id": "1771314928968",
-      "name": "pavan",
-      "email": "pavan@gmail.com",
-      "password": "1234",
-      "mobile": "1234567891",
-      "status": "Unblock"
-    },
-    {
-      "id": "f734"
-    },
-    {
-      "id": "1771582694647",
-      "name": "bipin",
-      "email": "bipin@gmail.com",
-      "password": "abc",
-      "mobile": "1234567891",
-      "status": "Unblock"
+      "id": "1771753842910",
+      "name": "Jay Khatik",
+      "email": "jay@gmail.com",
+      "comment": "Hey Iam Jaykumar khatik\n"
     }
   ]
 }
