@@ -80,9 +80,9 @@ function App() {
         //<UseRef1/>
 
         //<React_memo/>
-        //<React_useCallback/>
+        <React_useCallback/>
 
-        <UseReducer/>
+        //<UseReducer/>
      }
       
       

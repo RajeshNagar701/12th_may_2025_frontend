@@ -23,12 +23,12 @@ function React_memo() {
   };
 
   const expensiveCalculation = (num) => {
-    console.log("Calculating...");   
         alert('hello')
     };
 
+    
     //const calculation= expensiveCalculation(count); //withaout useMEMO ALL TIME REDURING 
-    const calculation= useMemo(()=>expensiveCalculation(count),[count])  // WITH useMemo only function call when depedanct count change  
+    const calculation= useMemo(()=>expensiveCalculation(count),[count])  // WITH useMemo only function call when depedancy count change  
 
 
   return (
