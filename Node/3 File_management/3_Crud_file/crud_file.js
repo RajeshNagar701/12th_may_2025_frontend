@@ -29,9 +29,8 @@ fs.rename(oldPath, newPath, callback)
 */
 
 const fs = require('fs');
-
 /*
-fs.writeFileSync('raj.txt','this is a simple file',(err)=>{
+fs.writeFileSync('demo.txt','this is a simple file',(err,data)=>{
 if(!err) { console.log("file is created"); }
 })
 */
@@ -39,10 +38,9 @@ if(!err) { console.log("file is created"); }
 
 
 // read
-
- /*
- fs.readFile('raj.txt','utf8',(err,data)=>{
- console.log(data);
+/*
+ fs.readFile('demo.txt','utf8',(err,res)=>{
+ console.log(res);
 })
 */
 
@@ -51,7 +49,7 @@ if(!err) { console.log("file is created"); }
 // update
 
 /*
-fs.appendFile('raj.txt','for fruits',(err)=>{
+fs.appendFile('demo.txt',': updated File',(err)=>{
 if(!err) {
 	console.log("file is updated");
 	}
@@ -61,22 +59,22 @@ if(!err) {
 
 
 // rename
-
-
 /*
-fs.rename('raj.txt','rajnew.txt',(err)=>{
-if(!err) console.log("file name is updated")
-})
+fs.rename('demo.txt','demonew.txt',(err)=>{
+	if(!err)
+	{ 
+		console.log("file name is updated"); 
+	}
+});
 */
 
 
 // Delete 	fs.unlink('test.txt', function ())
 
-/*
-fs.unlinkSync('rajnew.txt',(err)=>{
+fs.unlinkSync('demonew.txt',(err)=>{
 if(!err) console.log("file is deleted")
 });
-*/
+
 
 
 

@@ -1,9 +1,9 @@
 
 var fs = require('fs');
-
 //var data = fs.writeFileSync('dummyfile.txt', 'writecode');
 const input=process.argv;
-if(input[2]=='add')
+                      //  0        1      2     3                4
+if(input[2]=='add')  // nodemon index.js add fruits.txt "apple mango banana"
 {
 	fs.writeFileSync(input[3],input[4]);
 }
