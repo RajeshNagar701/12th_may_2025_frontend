@@ -6,6 +6,7 @@ var app=express();
 app.get('/',(req,res)=>{
 	
 	res.send('<h1>Hello word</h1>');
+	//resp.sendFile(`${publicpath}/index.html`);
 })
 
 app.get('/about',(req,res)=>{

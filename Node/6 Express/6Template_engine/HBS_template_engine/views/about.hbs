@@ -11,6 +11,30 @@
             <h2>
               About us
             </h2>
+			<table class="table">
+			<thead>
+			  <tr>
+				<th>Firstname</th>
+				<th>Lastname</th>
+				<th>Email</th>
+			  </tr>
+			</thead>
+			<tbody> 
+				<!-- #each: Iterates over arrays or objects. -->
+				
+			   {{#each data}}
+			  
+				  <tr>
+					<td>{{name}}</td>
+					<td>{{email}}</td>
+					<td>{{country}}</td>
+				  </tr>
+			 
+			   {{/each}}
+			  
+			</tbody>
+		  </table>
+			
             <p>
               There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomisedThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised
             </p>

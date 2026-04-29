@@ -37,7 +37,7 @@ _%> ‘Whitespace Slurping’ ending tag, removes all whitespace after it
 </ul>
 
 
-		npm install ejs 
+		npm install ejs/hbs 
 
 
 		Load ejs template in node JS
@@ -46,7 +46,7 @@ _%> ‘Whitespace Slurping’ ending tag, removes all whitespace after it
 app.set('view engine','ejs') // load ejs on app
 
 app.get('/about',(_,resp)=>{
-   resp.render(`${publicpath}/about`);
+   resp.render(`${publicpath}/about`);  // don't use about.ejs
 });
 
 Print user
@@ -68,7 +68,7 @@ print loop
 
 Layouts
 
-<%- include('header'); -%>
+<%- include('header'); -%>  // we can also import file by include()
 <h1>
   Title
 </h1>
@@ -91,6 +91,37 @@ var publicpath=path.join(__dirname,'public') // public sudhi no path
 
 app.set('view engine','ejs') // load ejs on app
 
+app.get('/',(_,resp)=>{
+   resp.render(`${publicpath}/index`);
+});
+
+app.get('/about',(_,resp)=>{
+  var data=[
+		{
+			name:'Nirav',
+			email:'Nirav@test.com',
+			country:'USA',
+		   Skills:['php','java','python	']
+		},
+		{
+			
+			name:'rajesh',
+			email:'rajesh@test.com',
+			country:'USA',
+		   Skills:['php','java','python	']
+		}
+	];
+   resp.render(`${publicpath}/about`,{data});
+});
+
+app.get('/about',(_,resp)=>{
+   resp.render(`${publicpath}/about`);
+});
+app.get('/blog',(_,resp)=>{
+   resp.render(`${publicpath}/blog`);
+});
+
+
 app.get('/basic_page',(_,resp)=>{
 	var user_obj=[
 				{
@@ -109,6 +140,7 @@ app.get('/basic_page',(_,resp)=>{
 			];
    resp.render(`${publicpath}/basic_view`,{user_obj});
 });
+
 
 
 app.listen(3000);
