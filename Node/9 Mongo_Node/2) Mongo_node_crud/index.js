@@ -19,7 +19,7 @@ getdata();
 /*
 const singledata=async ()=>{
    let data = await dbConnect();
-   let result = await data.find({'phone': '9000054321'}).toArray();
+   let result = await data.find({'id':100}).toArray();
    console.log(result)
 }
 singledata();
@@ -32,9 +32,9 @@ singledata();
 const insertdata=async ()=>{
    let data = await dbConnect();
    let result = await data.insertMany([
-          {First_Name:'akash',Last_Name:"nagar",Date_Of_Birth:"1995-01-01",e_mail:'akash@gmail.com',phone:'1234'},
-          {First_Name:'patel',Last_Name:"nirav",Date_Of_Birth:"1995-01-01",e_mail:'patel@gmail.com',phone:'1234'},
-          {First_Name:'mihir',Last_Name:"patel",Date_Of_Birth:"1995-01-01",e_mail:'mihir@gmail.com',phone:'1234'}
+          {userId:11,id:101,title:"data 1",body:'1at nam consequatur ea labore ea harum'},
+          {userId:11,id:102,title:"data 2",body:'2at nam consequatur ea labore ea harum'},
+          {userId:11,id:103,title:"data 3",body:'3at nam consequatur ea labore ea harum'}
       ]
 	);
 	if(result)
@@ -44,14 +44,13 @@ const insertdata=async ()=>{
 }
 insertdata();
 */
-
 /*
 const updateData=async ()=>{
     let data = await dbConnect();
     let result = await data.updateMany(
-        { First_Name:'patidar'},
+        { userId:11},
         {
-            $set:{First_Name:'patidar', e_mail:'patidar@gmail.com'}
+            $set:{title:'New Title'}
         }
       )
 	if(result)
@@ -62,15 +61,14 @@ const updateData=async ()=>{
 updateData();
 */
 
-
+/*
 const deleteData=async ()=>{
 	let data = await dbConnect();
-	let result = await data.deleteMany({First_Name:'mihir'});
+	let result = await data.deleteMany({userId:11});
 	if(result)
 	{
 		console.warn("data is Deleted")
 	}
 }
- 
 deleteData();
-
+*/ 

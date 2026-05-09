@@ -1,12 +1,10 @@
 const {MongoClient} = require('mongodb')
-const databaseName='beaidal';
 const client= new MongoClient('mongodb://localhost:27017');
-
 
 async function dbConnect()
 {
     let result = await client.connect();
-    db= result.db(databaseName);
-    return db.collection('employee');
+    db= result.db('12th_may_mern');
+    return db.collection('users');
 }
 module.exports= dbConnect;

@@ -108,6 +108,6 @@ app.delete("/deletedata3", async (req, resp) => {
 	let result = await data.delete({name:req.query})
 	console.log(req.query);
     resp.send({ status: "data deleted" })
-})
+});
 
 app.listen(5000);
