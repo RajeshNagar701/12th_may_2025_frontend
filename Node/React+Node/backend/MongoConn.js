@@ -1,0 +1,13 @@
+// Mongo database connectivity
+
+const {MongoClient}=require('mongodb') 	 // 1) impload mongodb
+const client=new MongoClient('mongodb://localhost:27017/');  	// 4) Create object for connectivity
+
+
+async function dbConnect()
+{
+    let result = await client.connect();
+    db= result.db('12th_may_mern');
+    return db.collection('users');
+}
+module.exports= dbConnect;
