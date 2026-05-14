@@ -18,21 +18,22 @@ function Dashbord() {
         setusers_data(res.data);
     }
 
-
     const deleteHandel = async (id) => {
-
+        const res = await axios.delete(`http://localhost:5000/delete/${id}`);
+        select_user();
+        alert(res.data.status);
+        return false;
     }
 
-
     const [formvalue, setFormvalue] = useState({
-        name: "",
-        email: "",
-        password: "",
-        mobile: "",
+        title: "",
+        body: "",
     });
 
     const editHandel = async (id) => {
-
+        const res = await axios.get(`http://localhost:5000/getsingle/${id}`);
+        console.log(res.data);
+        setFormvalue(res.data);
     }
 
     const changeHandel = (e) => {
@@ -41,7 +42,10 @@ function Dashbord() {
     }
     const submitHandel = async (e) => {
         e.preventDefault();
-
+        const res = await axios.put(`http://localhost:5000/update/${formvalue._id}`, formvalue);
+        select_user();
+        alert(res.data.status);
+        return false;
     }
 
     return (
@@ -75,8 +79,8 @@ function Dashbord() {
                                                 <td>{value.title}</td>
                                                 <td>{value.body}</td>
                                                 <td>
-                                                    <button className='btn btn-danger' onClick={() => deleteHandel()}>Delete</button>
-                                                    <button className='btn btn-primary' data-bs-toggle="modal" data-bs-target="#myModal" onClick={() => editHandel()}>Edit</button>
+                                                    <button className='btn btn-danger' onClick={() => deleteHandel(value._id)}>Delete</button>
+                                                    <button className='btn btn-primary' data-bs-toggle="modal" data-bs-target="#myModal" onClick={() => editHandel(value._id)}>Edit</button>
                                                     <div className="modal" id="myModal">
                                                         <div className="modal-dialog">
                                                             <div className="modal-content">
@@ -88,31 +92,24 @@ function Dashbord() {
                                                                 {/* Modal body */}
                                                                 <div className="modal-body">
                                                                     <div className="container mt-3">
-                                                                        <form action="" method='post' onSubmit={submitHandel}>
+                                                                        <form action="" method='post'>
                                                                             <div className="mb-3 mt-3">
-                                                                                <label htmlFor="email">Name:</label>
-                                                                                <input type="name" onChange={changeHandel} value={formvalue.name} className="form-control" id="name" placeholder="Enter name" name="name" />
+                                                                                <label htmlFor="email">Title:</label>
+                                                                                <input type="name" onChange={changeHandel} value={formvalue.title} className="form-control" id="name" placeholder="Enter title" name="title" />
                                                                             </div>
                                                                             <div className="mb-3 mt-3">
-                                                                                <label htmlFor="email">Email:</label>
-                                                                                <input type="email" onChange={changeHandel} className="form-control" value={formvalue.email} id="email" placeholder="Enter email" name="email" />
-                                                                            </div>
-                                                                            <div className="mb-3">
-                                                                                <label htmlFor="pwd">Password:</label>
-                                                                                <input type="password" onChange={changeHandel} className="form-control" value={formvalue.password} id="pwd" placeholder="Enter password" name="password" />
-                                                                            </div>
-                                                                            <div className="mb-3 mt-3">
-                                                                                <label htmlFor="email">Mobile:</label>
-                                                                                <input type="number" onChange={changeHandel} className="form-control" value={formvalue.mobile} id="email" placeholder="Enter Mobile" name="mobile" />
+                                                                                <label htmlFor="email">Body:</label>
+                                                                                <textarea onChange={changeHandel} className="form-control" value={formvalue.body} id="email" placeholder="Enter Body" name="body"></textarea>
                                                                             </div>
 
-                                                                            <button type="submit" data-bs-dismiss="modal" className="btn btn-primary">Submit</button>
+
+                                                                            <button type="submit" className="btn btn-primary" onClick={submitHandel} data-bs-dismiss="modal">Save</button>
                                                                         </form>
                                                                     </div>
                                                                 </div>
                                                                 {/* Modal footer */}
                                                                 <div className="modal-footer">
-                                                                    <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                                    <button type="button" className="btn btn-danger" >Close</button>
                                                                 </div>
                                                             </div>
                                                         </div>
