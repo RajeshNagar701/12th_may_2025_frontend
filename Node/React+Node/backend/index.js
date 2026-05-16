@@ -1,9 +1,20 @@
 
+// npm i mongopdb express cors
+
 const dbConnect = require('./MongoConn');
 const express = require('express');
 const app = express();
 
-const cors = require("cors");  // add for real production  
+
+/*
+
+Cross-Origin Resource Sharing (CORS) is a security mechanism enforced by web browsers 
+that controls how resources on a server can be requested from a different domain (origin).
+In Node.js, specifically with the Express framework, CORS is typically managed using the 
+cors middleware.
+*/
+
+const cors = require("cors");   // npm add for real production  
 app.use(cors());
 app.use(express.json());
 
@@ -30,8 +41,6 @@ app.get('/getsingle/:_id', async (req, resp) => {
 });
 
 //=========================================================================
-
-
 // data insert dynamic http://localhost:5000/postdata2  add data in body
 
 app.post("/postdata", async (req, resp) => {
