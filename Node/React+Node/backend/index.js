@@ -58,7 +58,6 @@ app.delete("/delete/:_id", async (req, resp) => {
     resp.send({ status: "User Data Deleted" });
 });
 
-
 // update by postman body   http://localhost:5000/putdata  add data in body
 
 //==================================================================================

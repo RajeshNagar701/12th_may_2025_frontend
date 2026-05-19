@@ -72,7 +72,7 @@ var emp_schema=mongoose.Schema({
 
 
 // create model & apply schema on model
-var emp_model = mongoose.model('emp_model', emp_schema, 'employees');
+var emp_model = mongoose.model('employees', emp_schema);
 
 
 
