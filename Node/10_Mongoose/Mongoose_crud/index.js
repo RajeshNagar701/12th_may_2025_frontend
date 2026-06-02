@@ -81,6 +81,9 @@ app.get("/get_search/:pattern", async (req, resp) => {
 	resp.send(data);
 });
 
+
+//================================================================================== 
+
 // get data by id  http://localhost:5000/post_data
 app.post("/post_data", async (req, resp) => {
     try {
@@ -97,5 +100,33 @@ app.post("/post_data", async (req, resp) => {
     }
 });
 
+app.delete("/delete_data/:_id", async (req, resp) => {
+    try {
+        let result = await user_model.deleteOne(req.params);
+        console.log(result);
+        resp.status(200).send(result);
+
+    } catch (error) {
+        console.log(error);
+        resp.status(500).send({
+            message: error.message
+        });
+    }
+});
+
+app.put("/update_data/:_id", async (req, resp) => {
+    try {
+        let result = await user_model.updateOne(req.params,
+        {$set: req.body});
+        console.log(result);
+        resp.status(200).send(result);
+
+    } catch (error) {
+        console.log(error);
+        resp.status(500).send({
+            message: error.message
+        });
+    }
+});
 
 app.listen(5000);
